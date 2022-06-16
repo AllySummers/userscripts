@@ -1,0 +1,24 @@
+diff --git a/node_modules/@types/youtube/index.d.ts b/node_modules/@types/youtube/index.d.ts
+index d8d7a70..d0899f7 100644
+--- a/node_modules/@types/youtube/index.d.ts
++++ b/node_modules/@types/youtube/index.d.ts
+@@ -11,7 +11,7 @@
+  * @see https://developers.google.com/youtube/iframe_api_reference
+  * @see https://developers.google.com/youtube/player_parameters
+  */
+-declare namespace YT
++export declare namespace YT
+ {
+     /**
+      * State of a video player.
+@@ -835,9 +835,8 @@ declare namespace YT
+          * Seeks to a specified time in the video.
+          *
+          * @param seconds   Time, in seconds from the beginning of the video.
+-         * @param allowSeekAhead   Whether the player is allowed to make a new request for unbuffered data.
+          */
+-        seekTo(seconds: number, allowSeekAhead: boolean): void;
++        seekTo(seconds: number): void;
+ 
+         /**
+          * Loads and plays the next video in the playlist.

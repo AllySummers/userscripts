@@ -3,17 +3,41 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+    "postinstall": "patch-package",
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test"
   },
   "private": true,
-  "dependencies": {},
   "devDependencies": {
-    "nx": "14.3.5",
     "@nrwl/cli": "14.3.5",
+    "@nrwl/eslint-plugin-nx": "^14.3.5",
+    "@nrwl/jest": "14.3.5",
+    "@nrwl/node": "^14.3.5",
     "@nrwl/workspace": "14.3.5",
-    "typescript": "~4.7.2",
-    "prettier": "^2.6.2"
+    "@types/jest": "28.1.1",
+    "@types/node": "18.0.0",
+    "@types/webpack": "^5.28.0",
+    "@types/youtube": "^0.0.46",
+    "@typescript-eslint/eslint-plugin": "~5.28.0",
+    "@typescript-eslint/parser": "~5.28.0",
+    "eslint": "^8.17.0",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-import-resolver-typescript": "^2.7.1",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jest": "^26.5.3",
+    "jest": "28.1.1",
+    "nx": "14.3.5",
+    "patch-package": "^6.4.7",
+    "prettier": "^2.7.1",
+    "ts-jest": "28.0.5",
+    "ts-node": "~10.8.1",
+    "ts-toolbelt": "^9.6.0",
+    "typescript": "~4.7.3",
+    "webpack-userscript": "^2.5.8"
+  },
+  "dependencies": {
+    "@material-design-icons/svg": "^0.11.2",
+    "tslib": "^2.4.0"
   }
 }

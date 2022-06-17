@@ -1,7 +1,12 @@
+//@ts-nocheck
+
+import localSvg from './file.svg';
 import fwd10Svg from '@material-design-icons/svg/sharp/forward_10.svg';
 import fwd30Svg from '@material-design-icons/svg/sharp/forward_30.svg';
-import back10Svg from '@material-design-icons/svg/sharp/rewind_10.svg';
-import back30Svg from '@material-design-icons/svg/sharp/rewind_30.svg';
+import back10Svg from '@material-design-icons/svg/sharp/replay_10.svg';
+import back30Svg from '@material-design-icons/svg/sharp/replay_30.svg';
+import _ from 'lodash';
+
 import {
   elemFromString,
   modifySvg,
@@ -10,6 +15,8 @@ import {
   waitForElem,
   type YouTubePlayer,
 } from './utils';
+
+console.log(typeof _, localSvg);
 
 const addButtons = (seeker: Seeker) => {
   const rightButtons = document.querySelector<HTMLDivElement>(

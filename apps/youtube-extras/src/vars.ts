@@ -38,18 +38,43 @@ export const styles = {
       flex: initial !important;
     }
   `,
-  centerButton: css({}),
-  buttonIcon: css({
-    fill: 'white',
-    height: 50,
-    width: 50,
-  }),
+  centerButtons: css`
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  `,
+  centerButton: css`
+    &&& {
+      padding-left: 0;
+      padding-right: 0;
+
+      &:first-child,
+      &:last-child {
+        margin: 0 -5px;
+      }
+    }
+
+    .ytp-big-mode {
+      & :nth-child(2) {
+        margin-right: 1rem;
+      }
+
+      & :nth-child(3) {
+        margin-left: 1rem;
+      }
+    }
+  `,
+  buttonIcon: css`
+    fill: white;
+    height: 50;
+    width: 50;
+  `,
 } as const;
 
 export const selectors = {
   buttonContainer: selectorSingle<HTMLDivElement>('.ytp-chrome-controls'),
   buttonAreas: selectorMultiple<HTMLDivElement>('.ytp-chrome-controls > .ytd-player'),
-  centerButton: selectorSingle<HTMLDivElement, false>(styles.centerButton),
+  centerButtons: selectorSingle<HTMLDivElement, false>(styles.centerButtons),
 } as const;
 
 export const buttons = generateButtons({

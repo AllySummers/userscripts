@@ -6,11 +6,11 @@ const addButtons = (seeker: Seeker) => {
   const buttonContainer = selectors.buttonContainer();
 
   const centerArea = document.createElement('div');
-  centerArea.classList.add(styles.centerButton, 'style-scope', 'ytd-player');
+  centerArea.classList.add(styles.centerButtons, 'style-scope', 'ytd-player');
 
   const centerButtons = buttons.center.map(({ listener, className = [], icon, title, name }) => {
     const button = setElementProperties(document.createElement('button'), {
-      className: [...makeArray(className), 'ytp-button'].join(' '),
+      className: [...makeArray(className), 'ytp-button', styles.centerButton].join(' '),
       ariaLabel: title,
       title,
       id: `center-btn-${name}`,
@@ -19,7 +19,7 @@ const addButtons = (seeker: Seeker) => {
     const svg = elemFromString<SVGSVGElement>(modifySvg(icon));
     svg.classList.add('style-scope', 'ytd-player', styles.buttonIcon);
     svg.prepend(elemFromString('<use class="ytp-svg-shadow style-scope ytd-player"></use>'));
-    svg.setAttribute('viewBox', '-6 -7 40 40');
+    svg.setAttribute('viewBox', '-6 -7 37 37');
 
     button.appendChild(svg);
     button.addEventListener('click', function (event) {

@@ -51,14 +51,7 @@
               "caseInsensitive": true,
               "order": "asc"
             },
-            "groups": [
-              "builtin",
-              "external",
-              "internal",
-              "parent",
-              "sibling",
-              "unknown"
-            ],
+            "groups": ["builtin", "external", "internal", "parent", "sibling", "unknown"],
             "pathGroups": [
               {
                 "group": "builtin",
@@ -110,10 +103,7 @@
         "no-unused-private-class-members": "error",
         "require-atomic-updates": "error",
         "@typescript-eslint/class-literal-property-style": ["error", "fields"],
-        "@typescript-eslint/consistent-indexed-object-style": [
-          "error",
-          "record"
-        ],
+        "@typescript-eslint/consistent-indexed-object-style": ["error", "record"],
         "@typescript-eslint/consistent-type-exports": [
           "error",
           {
@@ -205,7 +195,7 @@
         "@typescript-eslint/array-type": [
           "warn",
           {
-            "default": "generic"
+            "default": "array-simple"
           }
         ],
         "@typescript-eslint/ban-ts-comment": [
@@ -374,7 +364,7 @@
         "no-implied-eval": "off",
         "@typescript-eslint/no-implied-eval": "error",
         "no-invalid-this": "off",
-        "@typescript-eslint/no-invalid-this": "error",
+        "@typescript-eslint/no-invalid-this": "off",
         "no-loss-of-precision": "off",
         "@typescript-eslint/no-loss-of-precision": "error",
         "no-magic-numbers": "off",
@@ -399,7 +389,7 @@
         "@typescript-eslint/require-await": "error",
         "space-before-function-paren": "off",
         "@typescript-eslint/space-before-function-paren": [
-          "error",
+          "off",
           {
             "anonymous": "never",
             "named": "never",

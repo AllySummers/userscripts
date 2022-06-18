@@ -5,7 +5,7 @@
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "parserOptions": {
-        "project": ["apps/youtube-extras/tsconfig.*?.json"]
+        "project": ["libs/userscript-utils/tsconfig.*?.json"]
       },
       "rules": {}
     },
@@ -16,13 +16,6 @@
     {
       "files": ["*.js", "*.jsx"],
       "rules": {}
-    },
-    {
-      "files": ["webpack.config.ts", "jest.config.ts", "*.d.ts"],
-      "rules": {
-        "import/no-default-export": "off",
-        "import/no-extraneous-dependencies": "off"
-      }
     }
   ]
 }

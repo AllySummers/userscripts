@@ -7,15 +7,14 @@
       "executor": "@nrwl/web:webpack",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "index": "",
         "compiler": "babel",
         "generateIndexHtml": false,
+        "index": "apps/youtube-extras/src/index.html",
         "baseHref": "/",
-        "webpackConfig": "apps/youtube-extras/webpack.config.js",
+        "webpackConfig": "apps/youtube-extras/webpack.config.ts",
         "outputPath": "dist/apps/youtube-extras",
         "main": "apps/youtube-extras/src/main.ts",
-        "tsConfig": "apps/youtube-extras/tsconfig.app.json",
-        "assets": []
+        "tsConfig": "apps/youtube-extras/tsconfig.app.json"
       },
       "configurations": {
         "production": {
@@ -26,9 +25,18 @@
       }
     },
     "serve": {
-      "executor": "@nrwl/web:dev-server",
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
       "options": {
-        "buildTarget": "youtube-extras:build"
+        "compiler": "babel",
+        "generateIndexHtml": false,
+        "index": "apps/youtube-extras/src/index.html",
+        "baseHref": "/",
+        "webpackConfig": "apps/youtube-extras/webpack.config.ts",
+        "outputPath": "dist/apps/youtube-extras",
+        "main": "apps/youtube-extras/src/main.ts",
+        "tsConfig": "apps/youtube-extras/tsconfig.app.json",
+        "watch": true
       }
     },
     "lint": {

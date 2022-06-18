@@ -1,65 +1,47 @@
-
-import fwd10Svg from '@material-design-icons/svg/sharp/forward_10.svg';
-import fwd30Svg from '@material-design-icons/svg/sharp/forward_30.svg';
-import back10Svg from '@material-design-icons/svg/sharp/replay_10.svg';
-import back30Svg from '@material-design-icons/svg/sharp/replay_30.svg';
-
-import {
-  elemFromString,
-  modifySvg,
-  Seeker,
-  setElementProperties,
-  waitForElem,
-  type YouTubePlayer,
-} from './utils';
+import { makeArray, setElementProperties, waitForElem } from '@userscripts/utils';
+import { elemFromString, modifySvg, Seeker, type YouTubePlayer } from './utils';
+import { styles, selectors, buttons } from './vars';
 
 const addButtons = (seeker: Seeker) => {
-  const rightButtons = document.querySelector<HTMLDivElement>(
-    '.ytp-right-controls'
-  );
+  const buttonContainer = selectors.buttonContainer();
 
-  const [fwd10, back10, fwd30, back30] = [
-    fwd10Svg,
-    back10Svg,
-    fwd30Svg,
-    back30Svg,
-  ].map((svg) => {
-    const btn = setElementProperties(document.createElement('button'), {
-      className: 'ytp-button',
+  const centerArea = document.createElement('div');
+  centerArea.classList.add(styles.centerButton, 'style-scope', 'ytd-player');
+
+  const centerButtons = buttons.center.map(({ listener, className = [], icon, title, name }) => {
+    const button = setElementProperties(document.createElement('button'), {
+      className: [...makeArray(className), 'ytp-button'].join(' '),
+      ariaLabel: title,
+      title,
+      id: `center-btn-${name}`,
     });
-    const svgElem = elemFromString<SVGSVGElement>(modifySvg(svg));
-    svgElem.classList.add('style-scope', 'ytd-player');
-    svgElem.prepend(
-      elemFromString(
-        '<use class="ytp-svg-shadow style-scope ytd-player"></use>'
-      )
-    );
-    svgElem.style.fill = 'white';
-    svgElem.style.height = '50';
-    svgElem.style.width = '50';
-    svgElem.setAttribute('viewBox', '-6 -7 40 40');
 
-    btn.appendChild(svgElem);
-    return btn;
+    const svg = elemFromString<SVGSVGElement>(modifySvg(icon));
+    svg.classList.add('style-scope', 'ytd-player', styles.buttonIcon);
+    svg.prepend(elemFromString('<use class="ytp-svg-shadow style-scope ytd-player"></use>'));
+    svg.setAttribute('viewBox', '-6 -7 40 40');
+
+    button.appendChild(svg);
+    button.addEventListener('click', function (event) {
+      listener(seeker, event, this);
+    });
+
+    return button;
   });
 
-  back10.addEventListener('click', () => seeker.back(10));
-  fwd10.addEventListener('click', () => seeker.forward(10));
-  back30.addEventListener('click', () => seeker.back(30));
-  fwd30.addEventListener('click', () => seeker.forward(30));
-
-  rightButtons?.prepend(back10, fwd10, back30, fwd30);
+  centerArea.prepend(...centerButtons);
+  buttonContainer.children[0].insertAdjacentElement('afterend', centerArea);
 };
 
 async function main() {
   const player = await waitForElem<YouTubePlayer>('#movie_player');
   const seeker = new Seeker(player);
 
+  selectors.buttonContainer().classList.add(styles.buttonContainer);
+
   addButtons(seeker);
 }
 
-console.log('YOUTUBE EXTRAS SCRIPT');
-
 main()
-  .then(() => console.log('Running youtube extras!'))
-  .catch((err) => console.log('Youtube extras sad :( ', err));
+  .then(() => {})
+  .catch((_err) => {});

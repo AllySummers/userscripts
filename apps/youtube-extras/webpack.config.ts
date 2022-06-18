@@ -12,7 +12,7 @@ interface Context {
 
 const bannerResult = validateAndStringify({
   name: 'YouTube Extras',
-  namespace: 'http://tampermonkey.net/',
+  namespace: 'https://github.com/AllySummers/userscripts',
   grant: 'none',
   author: 'Me',
   version: '0.0.1',
@@ -23,7 +23,6 @@ const bannerResult = validateAndStringify({
     'http://youtube.com/watch?*',
     'https://youtube.com/watch?*',
   ],
-  // run_at: 'document-start',
 });
 
 if (!isRight(bannerResult)) {

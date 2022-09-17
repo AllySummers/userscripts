@@ -1,0 +1,59 @@
+{
+  "$schema": "..\\..\\node_modules\\nx\\schemas\\project-schema.json",
+  "sourceRoot": "apps/bumble-dark/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "compiler": "babel",
+        "generateIndexHtml": false,
+        "index": "apps/bumble-dark/src/index.html",
+        "baseHref": "/",
+        "webpackConfig": "apps/bumble-dark/webpack.config.ts",
+        "outputPath": "dist/apps/bumble-dark",
+        "main": "apps/bumble-dark/src/main.ts",
+        "tsConfig": "apps/bumble-dark/tsconfig.app.json"
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "compiler": "babel",
+        "generateIndexHtml": false,
+        "index": "apps/bumble-dark/src/index.html",
+        "baseHref": "/",
+        "webpackConfig": "apps/bumble-dark/webpack.config.ts",
+        "outputPath": "dist/apps/bumble-dark",
+        "main": "apps/bumble-dark/src/main.ts",
+        "tsConfig": "apps/bumble-dark/tsconfig.app.json",
+        "watch": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/bumble-dark/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/bumble-dark"],
+      "options": {
+        "jestConfig": "apps/bumble-dark/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

@@ -1,0 +1,59 @@
+{
+  "$schema": "..\\..\\node_modules\\nx\\schemas\\project-schema.json",
+  "sourceRoot": "apps/tinder-dark/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "compiler": "babel",
+        "generateIndexHtml": false,
+        "index": "apps/tinder-dark/src/index.html",
+        "baseHref": "/",
+        "webpackConfig": "apps/tinder-dark/webpack.config.ts",
+        "outputPath": "dist/apps/tinder-dark",
+        "main": "apps/tinder-dark/src/main.ts",
+        "tsConfig": "apps/tinder-dark/tsconfig.app.json"
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "compiler": "babel",
+        "generateIndexHtml": false,
+        "index": "apps/tinder-dark/src/index.html",
+        "baseHref": "/",
+        "webpackConfig": "apps/tinder-dark/webpack.config.ts",
+        "outputPath": "dist/apps/tinder-dark",
+        "main": "apps/tinder-dark/src/main.ts",
+        "tsConfig": "apps/tinder-dark/tsconfig.app.json",
+        "watch": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/tinder-dark/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/tinder-dark"],
+      "options": {
+        "jestConfig": "apps/tinder-dark/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

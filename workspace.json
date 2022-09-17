@@ -2,6 +2,8 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
+    "bumble-dark": "apps/bumble-dark",
+    "tinder-dark": "apps/tinder-dark",
     "userscript-utils": "libs/userscript-utils",
     "youtube-extras": "apps/youtube-extras"
   }
